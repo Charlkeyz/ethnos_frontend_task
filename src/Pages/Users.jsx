@@ -29,7 +29,7 @@ export default function Users() {
     <>
       <div className="flex flex-col items-center gap-5">
           <Table aria-label="Users table"  removeWrapper classNames={{
-            base: isDark ? "bg-[#18181B] text-white" : "bg-white p-4 rounded-xl overflow-auto" ,
+            base: isDark ? "bg-[#18181B] text-white p-4 rounded-xl overflow-auto" : "bg-white p-4 rounded-xl overflow-auto" ,
             th: isDark ? "bg-[#27272A]" : ""
           }}>
               <TableHeader>
