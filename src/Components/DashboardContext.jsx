@@ -20,11 +20,13 @@ export default function DashboardProvider({children}) {
 
 
     const [isDark, setIsDark] = useState(false)
+    const [loading, setLoading] = useState(true)
 
 
 
 
     const fetchData = async () => {
+      setLoading(true)
       try {
 
         //Fetching users
@@ -59,6 +61,7 @@ export default function DashboardProvider({children}) {
         }))
         setUsers(formattedUsers)
         setFilteredUsers(formattedUsers)
+        setLoading(false)
 
       } catch (error) {
         console.log("error msg", error)
@@ -137,6 +140,7 @@ export default function DashboardProvider({children}) {
 
 
     const value = {
+      loading,
       currentAlbums,
       totalAlbums,
       currentPost,

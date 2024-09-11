@@ -1,16 +1,16 @@
 import { useContext } from "react"
 import { DashboardContext } from "../Components/DashboardContext"
-import { Card, CardBody, CardFooter, CardHeader, Pagination } from "@nextui-org/react";
+import { Card, CardBody, CardFooter, CardHeader, Pagination, Spinner } from "@nextui-org/react";
 
 
 export default function Posts() {
 
 
-  const {currentPost, getUserName, totalPosts, handlePageChange, currentPage, isDark} = useContext(DashboardContext)
+  const {currentPost, getUserName, totalPosts, handlePageChange, currentPage, isDark, loading} = useContext(DashboardContext)
   return (
     <>
     <div className={`flex h-full w-full flex-wrap gap-5`}>
-      {currentPost.map((item, index) => (
+      { loading ? (<span className="text-center flex w-screen justify-center"> <Spinner /></span>) : (currentPost.map((item, index) => (
         <Card shadow="sm" key={index} className={`${isDark ? "bg-[#18181B] text-[#686871]" : ""} lg:w-1/3 flex flex-wrap p-2`}>
           <CardHeader className="text-base font-bold">
             <h1 className=""><b className={`${isDark ? "text-white" : ""}`}>Title:</b> {item.title}</h1>
@@ -24,7 +24,7 @@ export default function Posts() {
             </p>
           </CardFooter>
         </Card>
-      ))}
+      )))}
       
           <Pagination
               total={totalPosts}

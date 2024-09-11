@@ -1,4 +1,4 @@
-import { Pagination, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
+import { Pagination, Spinner, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
 import { useContext } from "react";
 import { DashboardContext } from "../Components/DashboardContext";
 
@@ -23,7 +23,7 @@ export default function Users() {
    
 
 
-  const {currentUsers, currentPage, totalPage, handlePageChange, isDark} = useContext(DashboardContext)
+  const {currentUsers, currentPage, totalPage, handlePageChange, isDark, loading} = useContext(DashboardContext)
 
   return (
     <>
@@ -37,7 +37,9 @@ export default function Users() {
                   <TableColumn key={index} className="px-4 py-2 text-base font-bold">{header.label}</TableColumn>
                 ))}
               </TableHeader>
-              <TableBody>
+              <TableBody
+                isLoading={loading}
+                loadingContent={<Spinner/>}>
                 {
                   currentUsers.map((user, index)=> (
                     <TableRow key={index.id}>
