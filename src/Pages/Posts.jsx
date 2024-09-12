@@ -31,7 +31,9 @@ export default function Posts() {
               showControls
               color="default"
               showShadow
-              initialPage={currentPage}
+              boundaries={0}
+              siblings={0}
+              page={currentPage}
               onChange={handlePageChange}
               className=" h-20 p-5"
               classNames ={{
