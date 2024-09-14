@@ -19,7 +19,7 @@ export default function Header() {
   }
 
   return (
-    <Navbar className={`${isDark ? "bg-black text-white border-b border-white" : "bg-white"} flex-1 flex flex-col overflow-hidden h-16 w-full lg:w-screen `}>
+    <Navbar className={`${isDark ? "bg-black text-white border-b border-white" : "bg-white"} flex-1 flex flex-col overflow-hidden ${showSearchInput ? "h-20" : "h-16"} w-full lg:w-screen`}>
       <NavbarBrand>
         <div className='flex items-center relative w-full h-full'>
         <IoMdSearch
@@ -30,8 +30,9 @@ export default function Header() {
 
           {/* Mobile Search Input */}
             {showSearchInput && (
-              <div className={`lg:hidden w-full bg-white border shadow-xl pr-2 ${showSearchInput ? "flex flex-col justify-center items-center" : "hidden"}`}>
-                <FaTimes  className="self-end bg-red-400" onClick={toggleSearch}/>
+              <div className={`lg:hidden w-full bg-white border shadow-xl pr-2 
+               ${showSearchInput ? "flex flex-col justify-center items-center" : "hidden"} transition-all duration-500 ease-in-out`}>
+                <FaTimes  className="self-end" onClick={toggleSearch}/>
                 <Input
                   clearable
                   value={searchUser}
